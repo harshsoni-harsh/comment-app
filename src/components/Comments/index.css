@@ -1,0 +1,77 @@
+/* Write your CSS here */
+
+.body {
+    padding: 60px;
+    min-height: 100vh;
+    font-family: Roboto;
+  }
+  h1 {
+    text-align: left;
+    width: 100%;
+    color: #1e293b;
+  }
+  form > p {
+    color: #475569;
+  }
+  .inputDiv {
+    justify-content: space-between;
+    display: flex;
+  }
+  .inputDiv > form {
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+  }
+  .commentImg {
+    max-width: 40vw;
+  }
+  hr {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  input,
+  textarea {
+    padding: 5px;
+    margin: 5px 0;
+    width: 300px;
+    color: #475569;
+    border: 1.35px #cbd2d9 solid;
+    font-weight: 500;
+    border-radius: 3px;
+    font-size: 14px;
+    outline: none;
+  }
+  textarea {
+    height: 100px;
+  }
+  .addButton {
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: #0284c7;
+    color: #dee0e3;
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 5px 0;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  .count {
+    padding: 2px 8px;
+    background-color: #0284c7;
+    color: #dee0e3;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  @media (max-width: 767px) {
+    .inputDiv {
+      flex-direction: column;
+    }
+    .commentImg {
+      order: -1;
+    }
+  }
+  
