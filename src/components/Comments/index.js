@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component, useState} from 'react'
 import {formatDistanceToNow} from 'date-fns'
 import {v4 as uuidv4} from 'uuid'
 import CommentItem from '../CommentItem'
@@ -18,7 +18,7 @@ const initialContainerBackgroundClassNames = [
 class App extends Component {
   constructor() {
     super()
-    this.state = {name: '', comment: '', comments: []}
+    this.state = {name: '', comment: '', commentsList: []}
 
     setInterval(() => {
       this.setState(prevState => prevState)
@@ -86,7 +86,7 @@ class App extends Component {
   }
 
   render() {
-    const {name, comment, comments} = this.state
+    const {name, comment, commentsList: comments} = this.state
     return (
       <div className="body">
         <h1 className="heading">Comments</h1>
