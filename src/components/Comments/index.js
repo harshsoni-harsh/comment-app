@@ -1,4 +1,4 @@
-import {Component, useState} from 'react'
+import {Component} from 'react'
 import {formatDistanceToNow} from 'date-fns'
 import {v4 as uuidv4} from 'uuid'
 import CommentItem from '../CommentItem'
@@ -15,7 +15,7 @@ const initialContainerBackgroundClassNames = [
 ]
 
 // Write your code here
-class App extends Component {
+class Comments extends Component {
   constructor() {
     super()
     this.state = {name: '', comment: '', commentsList: []}
@@ -29,7 +29,7 @@ class App extends Component {
     this.setState(prevState => ({
       name: prevState.name,
       comment: prevState.comment,
-      comments: prevState.comments.map(o => {
+      commentsList: prevState.commentsList.map(o => {
         if (o.id === id) {
           return {...o, like: !o.like}
         }
@@ -42,16 +42,13 @@ class App extends Component {
     this.setState(prevState => ({
       name: prevState.name,
       comment: prevState.comment,
-      comments: prevState.comments.filter(o => o.id !== id),
+      commentsList: prevState.commentsList.filter(o => o.id !== id),
     }))
   }
 
   addComment = e => {
     e.preventDefault()
     const prev = this.state
-    if (prev.name === '') {
-      return
-    }
     const newComment = {
       id: uuidv4(),
       name: prev.name,
@@ -65,7 +62,7 @@ class App extends Component {
     this.setState(prevState => ({
       name: '',
       comment: '',
-      comments: [newComment, ...prevState.comments],
+      commentsList: [...prevState.commentsList, newComment],
     }))
   }
 
@@ -73,7 +70,7 @@ class App extends Component {
     this.setState(prevState => ({
       name: e.target.value,
       comment: prevState.comment,
-      comments: prevState.comments,
+      commentsList: prevState.commentsList,
     }))
   }
 
@@ -81,12 +78,12 @@ class App extends Component {
     this.setState(prevState => ({
       name: prevState.name,
       comment: e.target.value,
-      comments: prevState.comments,
+      commentsList: prevState.commentsList,
     }))
   }
 
   render() {
-    const {name, comment, commentsList: comments} = this.state
+    const {name, comment, commentsList} = this.state
     return (
       <div className="body">
         <h1 className="heading">Comments</h1>
@@ -117,11 +114,11 @@ class App extends Component {
         </div>
         <hr />
         <p>
-          <span className="count">{comments.length}</span>
-          <span>Comments</span>
+          <span className="count">{commentsList.length}</span>
+          <span>commentsList</span>
         </p>
         <ul>
-          {comments.map(commentDetails => (
+          {commentsList.map(commentDetails => (
             <CommentItem
               key={commentDetails.id}
               commentDetails={commentDetails}
@@ -136,4 +133,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Comments
